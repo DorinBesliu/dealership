@@ -1,6 +1,12 @@
 ﻿namespace DealershipManager.Models
 {
-    public class Category
+    public enum Category
     {
+        SUV,
+        Hatchback,
+        Universal,
+        Crossover,
+        Sedan
+
     }
 }
