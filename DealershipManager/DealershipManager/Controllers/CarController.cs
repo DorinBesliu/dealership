@@ -1,4 +1,5 @@
-﻿using DealershipManager.Models;
+﻿using DealershipManager.Dtos;
+using DealershipManager.Models;
 using DealershipManager.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,19 +14,15 @@ namespace DealershipManager.Controllers
         {
             _carService = carService;
         }
-
-        // Add Car: POST /cars
-        [HttpPost]
+        [HttpPost] // POST api/cars
         [Route("cars")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(AddCarDto car)
         {
             _carService.Add(car);
 
             return Ok();
-
         }
-        // Get all cars : GET /cars
-        [HttpGet]
+        [HttpGet] // GET api/cars
         [Route("cars")]
         public IActionResult GetAll()
         {
@@ -46,10 +43,10 @@ namespace DealershipManager.Controllers
         // Update car : PUT/ cars/{id}
         [HttpPut]
         [Route("cars/{carId}")]
-        public IActionResult Update(Guid carId, Car car)
+        public IActionResult Update(Guid carId, UpdateCarDto car)
         {
             _carService.Update(carId, car);
-                
+
             return Ok();
         }
 
@@ -59,8 +56,9 @@ namespace DealershipManager.Controllers
         public IActionResult Delete(Guid carId)
         {
             _carService.Delete(carId);
-            
+
             return NoContent();
         }
     }
 }
+    
